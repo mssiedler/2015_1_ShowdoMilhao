@@ -9,8 +9,10 @@ package jogo;
 import dao.PerguntaDAO;
 import java.util.List;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import modelo.Audio;
 import modelo.Jogador;
+import modelo.JogoCompleto;
 import modelo.Pergunta;
 
 /**
@@ -26,6 +28,7 @@ public class Jogo extends javax.swing.JFrame {
     private Integer nivel;
     private Integer ultimonivel;
     private PerguntaDAO dao;
+    private Double premio;
 
     public Jogador getJogador() {
         return jogador;
@@ -269,10 +272,17 @@ public class Jogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+        //Começar o JOGO
+        JogoCompleto completo = new JogoCompleto(); 
+        completo.setJogador(jogador);
+        
+        
         lblNome.setText(jogador.getLogin());
+        
+
         //buscar as perguntas do nível 1
         dao = new PerguntaDAO();
+        premio = 2500.00;
         nivel = 1;
         ultimonivel = 2;
         perguntas = dao.listarNivel1();
@@ -302,6 +312,11 @@ public class Jogo extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
 
+        //VERIFICAR SE ACERTOU
+        boolean acertou = false;
+        System.out.println(rdbOpcao01.isSelected());
+        perguntaAtual.getCerta(); //A, B, C ou D
+       
         //elimina a pergunta que está sendo exibida
          perguntas.remove(0); 
          //Verifica se tem outra

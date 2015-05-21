@@ -55,6 +55,10 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel3.setText("SENHA:");
 
+        txtLogin.setText("lombardi");
+
+        txtSenha.setText("oisilvio");
+
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
